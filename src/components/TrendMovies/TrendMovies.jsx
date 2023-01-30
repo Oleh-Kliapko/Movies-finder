@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import {
   HomeWrapper,
   HomeTitle,
@@ -7,8 +6,7 @@ import {
   MovieItem,
   MovieImg,
 } from './TrendMovies.styled';
-
-const POSTER_URL = 'https://image.tmdb.org/t/p/original';
+import { POSTER_URL } from 'utils/posterUrl';
 
 export const TrendMovies = ({ trendMovies }) => {
   return (
@@ -17,10 +15,8 @@ export const TrendMovies = ({ trendMovies }) => {
       <MovieList>
         {trendMovies.map(({ id, title, backdrop_path }) => {
           return (
-            <MovieItem key={id}>
-              <Link to={`/movies/${id}`}>
-                <MovieImg src={`${POSTER_URL}${backdrop_path}`} alt={title} />
-              </Link>
+            <MovieItem key={id} to={`/movies/${id}`}>
+              <MovieImg src={`${POSTER_URL}${backdrop_path}`} alt={title} />
               {title}
             </MovieItem>
           );

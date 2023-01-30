@@ -17,7 +17,25 @@ async function fetchMovieTrends() {
   } else return Object.values(results);
 }
 
-// async function fetchMovieById(id) {}
+async function fetchMovieById(IdMovie) {
+  const { data, status } = await axios.get(
+    `${BASE_URL}movie/${IdMovie}?api_key=${API_KEY}`
+  );
+
+  if (status !== 200 || !data) {
+    throw new Error();
+  } else return data;
+}
+
+async function fetchCreditsById(IdMovie) {
+  const { data, status } = await axios.get(
+    `${BASE_URL}movie/${IdMovie}/credits?api_key=${API_KEY}`
+  );
+
+  if (status !== 200 || !data) {
+    throw new Error();
+  } else return data;
+}
 
 async function fetchMovieSearch(query = '', page = 1) {
   await axios.get(
@@ -28,4 +46,6 @@ async function fetchMovieSearch(query = '', page = 1) {
 export const API = {
   fetchMovieTrends,
   fetchMovieSearch,
+  fetchMovieById,
+  fetchCreditsById,
 };
