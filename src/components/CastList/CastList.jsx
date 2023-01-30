@@ -27,3 +27,7 @@ export const CastList = ({ credits: { cast } }) => {
     </CastWrapper>
   );
 };
+
+CastList.porTypes = {
+  credits: PropTypes.object.isRequired,
+};
