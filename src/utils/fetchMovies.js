@@ -4,7 +4,6 @@ const API_KEY = 'bdbc07f7fb6918c946cf9e79b19ef259';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDS = 'trending/movie/day';
 const SEARCH_MOVIE = 'search/movie';
-const STATIC_PARAMS = 'language=en-US&include_adult=false';
 
 async function fetchMovieTrends() {
   const {
@@ -37,9 +36,19 @@ async function fetchCreditsById(IdMovie) {
   } else return data;
 }
 
+async function fetchReviewsById(IdMovie) {
+  const { data, status } = await axios.get(
+    `${BASE_URL}movie/${IdMovie}/reviews?api_key=${API_KEY}`
+  );
+
+  if (status !== 200 || !data) {
+    throw new Error();
+  } else return data;
+}
+
 async function fetchMovieSearch(query = '', page = 1) {
   await axios.get(
-    `${BASE_URL}${SEARCH_MOVIE}?${query}&page=${page}&api_key=${API_KEY}&${STATIC_PARAMS}`
+    `${BASE_URL}${SEARCH_MOVIE}?${query}&page=${page}&api_key=${API_KEY}&language=en-US&include_adult=false`
   );
 }
 
@@ -48,4 +57,5 @@ export const API = {
   fetchMovieSearch,
   fetchMovieById,
   fetchCreditsById,
+  fetchReviewsById,
 };

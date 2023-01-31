@@ -6,9 +6,9 @@ import defaultImage from '../../utils/defaultImage.webp';
 export const CastList = ({ credits: { cast } }) => {
   return (
     <CastWrapper>
-      {cast.map(({ id, name, profile_path, character }) => {
+      {cast.map(({ credit_id, name, profile_path, character }) => {
         return (
-          <CastItem key={id}>
+          <CastItem key={credit_id}>
             {profile_path && (
               <CastImg src={`${POSTER_URL}${profile_path}`} alt={name} />
             )}
