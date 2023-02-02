@@ -3,7 +3,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from 'utils';
 import { Loader } from 'utils';
-import { TrendMovies } from '../components/TrendMovies';
+import { MovieList } from '../../components/MovieList';
+import { HomeTitle } from './Home.styled';
 
 export const Home = () => {
   const [trendMovies, setTrendMovies] = useState([]);
@@ -20,7 +21,8 @@ export const Home = () => {
   return (
     <>
       {loading && <Loader />}
-      {trendMovies && <TrendMovies trendMovies={trendMovies} />}
+      {trendMovies && <HomeTitle>Trending today</HomeTitle>}
+      {trendMovies && <MovieList movies={trendMovies} />}
       <ToastContainer autoClose={3000} />
     </>
   );

@@ -1,22 +1,12 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const HomeWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  padding-top: 100px;
-  padding-left: 40px;
-`;
-
-export const HomeTitle = styled.h1`
-  margin: 0;
-`;
-
-export const MovieList = styled.div`
+export const MovieListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-left: 40px;
 `;
 
 export const MovieItem = styled(Link)`

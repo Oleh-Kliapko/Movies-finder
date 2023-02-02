@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 import { POSTER_URL } from 'utils/posterUrl';
 import {
   ReviewWrapper,
@@ -37,7 +38,7 @@ export const ReviewList = ({ reviews: { results, total_results } }) => {
                     <b>Author: </b> {author}
                   </span>
                   <span>
-                    <b>Updated at: </b> {updated_at}
+                    <b>Updated at: </b> {format(new Date(updated_at), 'PPpp')}
                   </span>
                 </ReviewInfo>
               </AuthorWrapper>
