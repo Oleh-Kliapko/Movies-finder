@@ -1,16 +1,19 @@
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from 'utils';
 import { Loader } from 'utils';
 import { MovieCard } from 'components/MovieCard';
-import { AddInfoWrapper, InfoItem } from './MovieDetails.styled';
+import { ButtonGoBack, AddInfoWrapper, InfoItem } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
   const [movieDetails, setMovieDetails] = useState();
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     setLoading(true);
@@ -24,6 +27,7 @@ export const MovieDetails = () => {
   return (
     <>
       {loading && <Loader />}
+      {movieDetails && <ButtonGoBack to={backLinkHref}>⬅ Go back</ButtonGoBack>}
       {movieDetails && <MovieCard movieDetails={movieDetails} />}
       <AddInfoWrapper>
         <InfoItem to={`/movies/${movieId}/cast`}>Cast</InfoItem>

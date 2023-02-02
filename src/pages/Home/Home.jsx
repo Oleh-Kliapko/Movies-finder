@@ -9,6 +9,7 @@ import { HomeTitle } from './Home.styled';
 export const Home = () => {
   const [trendMovies, setTrendMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  localStorage.removeItem('movies');
 
   useEffect(() => {
     setLoading(true);
