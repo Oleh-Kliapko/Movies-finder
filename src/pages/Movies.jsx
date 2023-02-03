@@ -8,31 +8,30 @@ import { SearchMovie } from 'components/SearchMovie';
 
 const MovieList = lazy(() => import('../components/MovieList'));
 
+let initialMovieName;
+
 const Movies = () => {
   const [query, setQuery] = useState(null);
-  const [movies, setMovies] = useState(
-    JSON.parse(localStorage.getItem('movies')) || null
-  );
+  const [movies, setMovies] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get('query') ?? '';
+  const movieName = searchParams.get('query') ?? initialMovieName;
 
   useEffect(() => {
-    if (!query) return;
+    if (!movieName) return;
 
-    API.fetchMovieSearch(query)
+    API.fetchMovieSearch(movieName)
       .then(res => {
         setMovies(res);
-        localStorage.setItem('movies', JSON.stringify(res));
+        initialMovieName = movieName;
       })
       .catch(() => toast.error('Sorry, there are not details of this movie'));
-  }, [query]);
+  }, [movieName]);
 
   const onSubmitForm = search => {
     if (search !== query) {
       setQuery(search);
       updateQueryString(search);
-      // setMovies([]);
     } else {
       toast.warn('The new search must be different from the current search');
     }
@@ -47,7 +46,9 @@ const Movies = () => {
     <>
       <SearchMovie value={movieName} onSubmit={onSubmitForm} />
       <Suspense fallback={<Loader />}>
-        {movies && <MovieList movies={movies} />}
+        {movies && (
+          <MovieList movies={movies} initialMovieName={initialMovieName} />
+        )}
       </Suspense>
       <ToastContainer autoClose={3000} />
     </>

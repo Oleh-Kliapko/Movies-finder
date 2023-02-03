@@ -9,6 +9,12 @@ export const MovieListWrapper = styled.div`
   padding-left: 40px;
 `;
 
+export const Message = styled.div`
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 40px;
+`;
+
 export const MovieItem = styled(Link)`
   display: flex;
   align-items: center;

@@ -9,7 +9,6 @@ const MovieList = lazy(() => import('../../components/MovieList'));
 
 export const Home = () => {
   const [trendMovies, setTrendMovies] = useState(null);
-  localStorage.removeItem('movies');
 
   useEffect(() => {
     API.fetchMovieTrends()

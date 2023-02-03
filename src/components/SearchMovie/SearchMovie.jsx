@@ -18,8 +18,8 @@ export function SearchMovie({ onSubmit }) {
 
   const handleSubmitForm = evt => {
     evt.preventDefault();
-    if (query.trim() === '' || query.length < 3) {
-      toast.warn('Searching must be no empty and more than 2 letters');
+    if (query.trim() === '' || query.length < 2) {
+      toast.warn('Searching must be no empty and more than 1 letter');
       resetForm();
       return;
     }

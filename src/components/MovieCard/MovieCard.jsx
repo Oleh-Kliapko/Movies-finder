@@ -10,6 +10,7 @@ import {
   Text,
   AddInfo,
 } from './MovieCard.styled';
+import noPoster from '../../utils/noPoster.jpg';
 
 export const MovieCard = ({
   movieDetails: {
@@ -26,7 +27,10 @@ export const MovieCard = ({
   return (
     <>
       <CardWrapper>
-        <Poster src={`${POSTER_URL}${poster_path}`} alt={title} />
+        {poster_path && (
+          <Poster src={`${POSTER_URL}${poster_path}`} alt={title} />
+        )}
+        {!poster_path && <Poster src={noPoster} alt={title} />}
         <MovieInfo>
           <Title> {title} </Title>
           <Subtitle>
