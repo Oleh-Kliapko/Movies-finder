@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { API } from 'utils';
 import { Loader } from 'utils';
 import { SearchMovie } from 'components/SearchMovie';
-import { MovieList } from 'components/MovieList';
 
-export const Movies = () => {
-  const [loading, setLoading] = useState(false);
+const MovieList = lazy(() => import('../components/MovieList'));
+
+const Movies = () => {
   const [query, setQuery] = useState(null);
   const [movies, setMovies] = useState(
     JSON.parse(localStorage.getItem('movies')) || null
@@ -20,15 +20,12 @@ export const Movies = () => {
   useEffect(() => {
     if (!query) return;
 
-    setLoading(true);
-
     API.fetchMovieSearch(query)
       .then(res => {
         setMovies(res);
         localStorage.setItem('movies', JSON.stringify(res));
       })
-      .catch(() => toast.error('Sorry, there are not details of this movie'))
-      .finally(() => setLoading(false));
+      .catch(() => toast.error('Sorry, there are not details of this movie'));
   }, [query]);
 
   const onSubmitForm = search => {
@@ -49,9 +46,12 @@ export const Movies = () => {
   return (
     <>
       <SearchMovie value={movieName} onSubmit={onSubmitForm} />
-      {loading && <Loader />}
-      {movies && <MovieList movies={movies} />}
+      <Suspense fallback={<Loader />}>
+        {movies && <MovieList movies={movies} />}
+      </Suspense>
       <ToastContainer autoClose={3000} />
     </>
   );
 };
+
+export default Movies;

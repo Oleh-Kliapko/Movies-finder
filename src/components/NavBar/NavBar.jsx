@@ -1,5 +1,7 @@
 import { Header, NavBarItem } from './NavBar.styled';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Loader } from 'utils';
 
 export const NavBar = () => {
   return (
@@ -8,7 +10,9 @@ export const NavBar = () => {
         <NavBarItem to="/">Home</NavBarItem>
         <NavBarItem to="/movies">Movies</NavBarItem>
       </Header>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

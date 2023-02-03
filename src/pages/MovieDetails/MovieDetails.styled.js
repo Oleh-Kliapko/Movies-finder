@@ -1,8 +1,13 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 
 export const ButtonGoBack = ({ to, children }) => {
   return <ButtonStyles to={to}>{children}</ButtonStyles>;
+};
+
+ButtonGoBack.propTypes = {
+  to: PropTypes.string.isRequired,
 };
 
 export const ButtonStyles = styled(Link)`
