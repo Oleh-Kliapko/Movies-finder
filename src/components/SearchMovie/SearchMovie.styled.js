@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '../../services';
 
 export const SearchbarWrapper = styled.section`
   top: 0;
@@ -7,39 +8,37 @@ export const SearchbarWrapper = styled.section`
   z-index: 2;
   display: flex;
   align-items: center;
-  min-height: 36px;
-  padding: 12px 24px;
-  padding-left: 40px;
-  color: '#fff';
-  background-color: rgb(240, 240, 240);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  width: 100vw;
+  min-height: ${theme.sizes[0]}px;
+  padding: ${theme.space[2]}px ${theme.space[5]}px;
+  padding-left: ${theme.space[7]}px;
+  background-color: ${theme.colors.primeBg};
+  box-shadow: ${theme.shadows.prime};
 `;
 
 export const SearchForm = styled.form`
   display: flex;
   width: 100%;
-  max-width: 600px;
-  background-color: '#fff';
-  border-radius: 4px;
+  max-width: ${theme.sizes[7]}px;
+  background-color: ${theme.colors.prime};
+  border-radius: ${theme.radii[1]}px;
   overflow: hidden;
 `;
 
 export const SearchButton = styled.button`
   display: inline-block;
-  width: 48px;
-  height: 48px;
-  border: 1px solid;
-  border-color: rgb(190, 190, 190);
+  width: ${theme.sizes[0]}px;
+  height: ${theme.sizes[0]}px;
+  border: ${theme.borders.secondary};
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: ${theme.opacities[0]}px;
+  transition: ${theme.transitions.opacity};
   cursor: pointer;
   outline: none;
   &:hover {
-    opacity: 1;
+    opacity: ${theme.opacities[1]}px;
   }
 `;
 
@@ -47,12 +46,12 @@ export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
   font: inherit;
-  font-size: 24px;
+  font-size: ${theme.fontSizes[4]}px;
   border: none;
   outline: none;
-  padding: 10px;
+  padding: ${theme.space[1]}px;
   &::placeholder {
-    font: inherit;
-    font-size: 20px;
+    font-style: inherit;
+    font-size: ${theme.fontSizes[3]}px;
   }
 `;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { POSTER_URL } from 'utils/posterUrl';
+import { POSTER_URL } from 'services';
 import {
   ReviewWrapper,
   ReviewItem,
@@ -10,7 +10,7 @@ import {
   ReviewContent,
   NotReviews,
 } from './ReviewList.styled';
-import defaultImage from '../../utils/defaultImage.webp';
+import defaultImage from '../../images/defaultImage.webp';
 
 export const ReviewList = ({ reviews: { results, total_results } }) => {
   if (!total_results)

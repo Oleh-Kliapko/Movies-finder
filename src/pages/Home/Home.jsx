@@ -1,14 +1,15 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { API } from 'utils';
-import { Loader } from 'utils';
+import { API } from 'services';
+import { Loader } from 'services';
 import { HomeTitle } from './Home.styled';
 
 const MovieList = lazy(() => import('../../components/MovieList'));
 
 export const Home = () => {
   const [trendMovies, setTrendMovies] = useState(null);
+  localStorage.removeItem('movies');
 
   useEffect(() => {
     API.fetchMovieTrends()

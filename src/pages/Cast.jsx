@@ -2,8 +2,8 @@ import { useState, useEffect, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Loader } from 'utils';
-import { API } from 'utils';
+import { Loader } from 'services';
+import { API } from 'services';
 import { CastList } from 'components/CastList';
 
 const Cast = () => {

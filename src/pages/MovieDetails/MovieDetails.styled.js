@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
+import { theme } from '../../services';
 
 export const ButtonGoBack = ({ to, children }) => {
   return <ButtonStyles to={to}>{children}</ButtonStyles>;
@@ -11,59 +12,59 @@ ButtonGoBack.propTypes = {
 };
 
 export const ButtonStyles = styled(Link)`
-  font-size: 14px;
+  font-size: ${theme.fontSizes[1]}px;
   text-decoration: none;
   text-align: center;
   display: inline-block;
   color: inherit;
-  background-color: rgb(230, 230, 230);
+  background-color: ${theme.colors.secondBg};
 
-  width: 120px;
-  margin-top: 5px;
-  margin-left: 40px;
-  padding: 5px 10px;
+  width: ${theme.sizes[3]}px;
+  margin-top: ${theme.space[2]}px;
+  margin-left: ${theme.space[7]}px;
+  padding: ${theme.space[0]}px ${theme.space[1]}px;
 
-  border-radius: 4px;
+  border-radius: ${theme.radii[1]}px;
   border: none;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${theme.shadows.prime};
+  transition: ${theme.transitions.all};
 
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: rgb(210, 210, 210);
+    background-color: ${theme.colors.otherBg};
+    color: ${theme.colors.second};
   }
 `;
 
 export const AddInfoWrapper = styled.div`
   display: flex;
-  gap: 20px;
-  padding-left: 40px;
-  margin-top: 10px;
+  gap: ${theme.space[4]}px;
+  padding-left: ${theme.space[7]}px;
+  margin-top: ${theme.space[2]}px;
 `;
 
 export const InfoItem = styled(NavLink)`
-  font-size: 18px;
+  font-size: ${theme.fontSizes[2]}px;
   text-decoration: none;
   text-align: center;
   color: inherit;
-  background-color: rgb(230, 230, 230);
-  padding: 5px 10px;
-  width: 100px;
+  background-color: ${theme.colors.secondBg};
+  padding: ${theme.space[0]}px ${theme.space[1]}px;
+  width: ${theme.sizes[2]}px;
   margin: 0;
 
-  border-radius: 4px;
+  border-radius: ${theme.radii[1]}px;
   border: none;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${theme.shadows.prime};
+  transition: ${theme.transitions.all};
 
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: rgb(210, 210, 210);
+    background-color: ${theme.colors.otherBg};
+    color: ${theme.colors.second};
   }
 `;

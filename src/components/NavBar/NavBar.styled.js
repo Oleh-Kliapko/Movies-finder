@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import { theme } from '../../services';
 
 export const Header = styled.header`
   top: 0;
@@ -8,22 +9,21 @@ export const Header = styled.header`
   z-index: 1;
   display: flex;
   align-items: center;
-  padding: 10px;
-  padding-left: 40px;
-  gap: 40px;
+  padding: ${theme.space[2]}px;
+  padding-left: ${theme.space[7]}px;
+  gap: ${theme.space[7]}px;
   width: 100vw;
-  background-color: #aeb7ec;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 4px 5px 0 rgba(0, 0, 0, 0.04),
-    0 1px 10px 0 rgba(0, 0, 0, 0.02);
+  background-color: ${theme.colors.headerBg};
+  box-shadow: ${theme.shadows.other};
 `;
 
 export const NavBarItem = styled(NavLink)`
-  font-size: 36px;
+  font-size: ${theme.fontSizes[5]}px;
   display: block;
   text-decoration: none;
 
   &.active {
-    color: tomato;
-    border-bottom: 2px solid tomato;
+    color: ${theme.colors.second};
+    border-bottom: ${theme.borders.prime};
   }
 `;

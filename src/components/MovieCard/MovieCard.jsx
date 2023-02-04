@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { POSTER_URL } from 'utils/posterUrl';
+import { POSTER_URL } from 'services';
 import {
   CardWrapper,
   MovieInfo,
@@ -10,7 +10,7 @@ import {
   Text,
   AddInfo,
 } from './MovieCard.styled';
-import noPoster from '../../utils/noPoster.jpg';
+import noPoster from '../../images/noPoster.jpg';
 
 export const MovieCard = ({
   movieDetails: {

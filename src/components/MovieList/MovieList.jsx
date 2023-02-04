@@ -1,42 +1,29 @@
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import {
-  MovieListWrapper,
-  MovieItem,
-  MovieImg,
-  Message,
-} from './MovieList.styled';
-import { POSTER_URL } from 'utils/posterUrl';
-import noPoster from '../../utils/noPoster.jpg';
+import { MovieListWrapper, MovieItem, MovieImg } from './MovieList.styled';
+import { POSTER_URL } from 'services';
+import noPoster from '../../images/noPoster.jpg';
 
-export const MovieList = ({ movies, initialMovieName }) => {
+export const MovieList = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <>
-      {initialMovieName && (
-        <Message>
-          Below are the search results of movie "{initialMovieName}"
-        </Message>
-      )}
-      <MovieListWrapper>
-        {movies.map(({ id, title, backdrop_path }) => {
-          return (
-            <MovieItem key={id} to={`/movies/${id}`} state={{ from: location }}>
-              {backdrop_path && (
-                <MovieImg src={`${POSTER_URL}${backdrop_path}`} alt={title} />
-              )}
-              {!backdrop_path && <MovieImg src={noPoster} alt={title} />}
-              {title}
-            </MovieItem>
-          );
-        })}
-      </MovieListWrapper>
-    </>
+    <MovieListWrapper>
+      {movies.map(({ id, title, backdrop_path }) => {
+        return (
+          <MovieItem key={id} to={`/movies/${id}`} state={{ from: location }}>
+            {backdrop_path && (
+              <MovieImg src={`${POSTER_URL}${backdrop_path}`} alt={title} />
+            )}
+            {!backdrop_path && <MovieImg src={noPoster} alt={title} />}
+            {title}
+          </MovieItem>
+        );
+      })}
+    </MovieListWrapper>
   );
 };
 
 MovieList.propTypes = {
   movies: PropTypes.array.isRequired,
-  initialMovieName: PropTypes.string.isRequired,
 };

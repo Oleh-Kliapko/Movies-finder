@@ -2,8 +2,8 @@ import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef, Suspense } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { API } from 'utils';
-import { Loader } from 'utils';
+import { API } from 'services';
+import { Loader } from 'services';
 import { MovieCard } from 'components/MovieCard';
 import { ButtonGoBack, AddInfoWrapper, InfoItem } from './MovieDetails.styled';
 
@@ -27,24 +27,28 @@ export const MovieDetails = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        {movieDetails && <ButtonGoBack to={backLink}>⬅ Go back</ButtonGoBack>}
-        {movieDetails && <MovieCard movieDetails={movieDetails} />}
-        <AddInfoWrapper>
-          <InfoItem to={`/movies/${movieId}/cast`} state={{ from: location }}>
-            Cast
-          </InfoItem>
-          <InfoItem
-            to={`/movies/${movieId}/reviews`}
-            state={{ from: location }}
-          >
-            Reviews
-          </InfoItem>
-        </AddInfoWrapper>
-      </Suspense>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      {movieDetails && (
+        <Suspense fallback={<Loader />}>
+          <ButtonGoBack to={backLink}>⬅ Go back</ButtonGoBack>
+          <MovieCard movieDetails={movieDetails} />
+          <AddInfoWrapper>
+            <InfoItem to={`/movies/${movieId}/cast`} state={{ from: location }}>
+              Cast
+            </InfoItem>
+            <InfoItem
+              to={`/movies/${movieId}/reviews`}
+              state={{ from: location }}
+            >
+              Reviews
+            </InfoItem>
+          </AddInfoWrapper>
+        </Suspense>
+      )}
+      {movieDetails && (
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      )}
       <ToastContainer autoClose={3000} />
     </>
   );

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { POSTER_URL } from 'utils/posterUrl';
+import { POSTER_URL } from 'services';
 import { CastWrapper, CastItem, CastImg, CastInfo } from './CastList.styled';
-import defaultImage from '../../utils/defaultImage.webp';
+import defaultImage from '../../images/defaultImage.webp';
 
 export const CastList = ({ credits: { cast } }) => {
   return (

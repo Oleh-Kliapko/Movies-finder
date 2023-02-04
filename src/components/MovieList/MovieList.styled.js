@@ -1,45 +1,40 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { theme } from '../../services';
 
 export const MovieListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding-top: 20px;
-  padding-left: 40px;
-`;
-
-export const Message = styled.div`
-  font-size: 20px;
-  padding: 10px;
-  padding-left: 40px;
+  gap: ${theme.space[4]}px;
+  margin-top: ${theme.space[4]}px;
+  padding-left: ${theme.space[7]}px;
 `;
 
 export const MovieItem = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: 20px;
+  gap: ${theme.space[4]}px;
+  font-size: ${theme.fontSizes[3]}px;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  width: 400px;
-  padding: 10px;
-  padding-left: 15px;
-  background-color: rgb(240, 240, 240);
-  border-radius: 3px;
-  box-shadow: 1px 2px rgb(190, 190, 190);
+  width: ${theme.sizes[6]}px;
+  padding: ${theme.space[1]}px;
+  padding-left: ${theme.space[3]}px;
+  background-color: ${theme.colors.primeBg};
+  border-radius: ${theme.radii[0]}px;
+  box-shadow: ${theme.shadows.second};
 
   &:hover,
   &:focus {
-    color: tomato;
-    background-color: rgb(230, 230, 230);
-    box-shadow: 2px 3px rgb(170, 170, 170);
+    color: ${theme.colors.second};
+    background-color: ${theme.colors.secondBg};
+    box-shadow: ${theme.shadows.prime};
   }
 `;
 
 export const MovieImg = styled.img`
   display: block;
-  max-width: 120px;
+  max-width: ${theme.sizes[3]}px;
   height: auto;
 `;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import loupe from '../../utils/loupe.svg';
+import loupe from '../../images/loupe.svg';
 import {
   SearchbarWrapper,
   SearchForm,
