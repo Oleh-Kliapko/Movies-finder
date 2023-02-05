@@ -13,7 +13,8 @@ export const MovieDetails = () => {
 
   const location = useLocation();
 
-  const initialPath = useRef(location.state.from.pathname || null);
+  const initialPath = useRef(location?.state?.from?.pathname || null);
+
   let backLink = '';
   if (initialPath.current === '/') {
     backLink = '/';
@@ -32,12 +33,15 @@ export const MovieDetails = () => {
           <ButtonGoBack to={backLink}>⬅ Go back</ButtonGoBack>
           <MovieCard movieDetails={movieDetails} />
           <AddInfoWrapper>
-            <InfoItem to={`/movies/${movieId}/cast`} state={{ from: location }}>
+            <InfoItem
+              to={`/movies/${movieId}/cast`}
+              // state={{ from: location }}
+            >
               Cast
             </InfoItem>
             <InfoItem
               to={`/movies/${movieId}/reviews`}
-              state={{ from: location }}
+              // state={{ from: location }}
             >
               Reviews
             </InfoItem>
